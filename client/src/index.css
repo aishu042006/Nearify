@@ -1,0 +1,211 @@
+@import "tailwindcss";
+
+:root {
+  /* Light Theme Colors */
+  --bg-color: #F8FAFC;
+  --card-bg: #FFFFFF;
+  --card-border: #E2E8F0;
+  --primary-color: #2563EB;
+  --primary-hover: #1D4ED8;
+  --secondary-color: #4F46E5;
+  --accent-color: #06B6D4;
+  --text-color: #0F172A;
+  --text-muted: #64748B;
+  --glass-nav: rgba(248, 250, 252, 0.85);
+  --shadow-color: rgba(37, 99, 235, 0.02);
+  --pulse-glow: rgba(37, 99, 235, 0.04);
+  
+  --bg-gradient-mesh: radial-gradient(circle at 50% -20%, rgba(37, 99, 235, 0.04) 0%, rgba(248, 250, 252, 0) 75%), #F8FAFC;
+}
+
+.dark {
+  /* Dark Theme Colors */
+  --bg-color: #0F172A;
+  --card-bg: #1E293B;
+  --card-border: #334155;
+  --primary-color: #3b82f6;
+  --primary-hover: #60a5fa;
+  --secondary-color: #6366f1;
+  --accent-color: #22d3ee;
+  --text-color: #F8FAFC;
+  --text-muted: #94a3b8;
+  --glass-nav: rgba(15, 23, 42, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --pulse-glow: rgba(59, 130, 246, 0.1);
+  
+  --bg-gradient-mesh: radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.1) 0%, rgba(15, 23, 42, 0) 75%), #0F172A;
+}
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, sans-serif;
+  
+  --color-bg-theme: var(--bg-color);
+  --color-card-theme: var(--card-bg);
+  --color-border-theme: var(--card-border);
+  --color-primary-theme: var(--primary-color);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary-theme: var(--secondary-color);
+  --color-accent-theme: var(--accent-color);
+  --color-text-theme: var(--text-color);
+  --color-text-muted-theme: var(--text-muted);
+}
+
+/* Custom Utilities & Transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* Accessible Focus States */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--primary-color) !important;
+  outline-offset: 2.5px !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15) !important;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  border-inline: none;
+  min-height: auto;
+  display: block;
+  box-sizing: border-box;
+}
+
+/* Transitions for cards */
+.theme-transition {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Sticky Glassmorphic Navbar */
+.glass-navbar {
+  background: var(--glass-nav);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+/* Premium Card Designs */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 30px 0 var(--shadow-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px 0 var(--pulse-glow);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* Glass inputs */
+.glass-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 15px var(--pulse-glow);
+}
+
+/* Floating Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes float-delayed {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 6s ease-in-out infinite;
+}
+
+/* Text Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 50%, var(--accent-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sleek Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* 3D Card Flip Helpers */
+.perspective-1000 {
+  perspective: 1000px;
+}
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Infinite Marquee Classes */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+/* Masking gradients for scrolling testimonials */
+.mask-gradient {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
